@@ -1,7 +1,8 @@
-package com.geniadynamics.housify
+package com.geniadynamics.housify.model
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.geniadynamics.housify.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
