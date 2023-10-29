@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Housify</string>
+    <string name="send">Send</string>
+    <string name="describe_your_request">Describe your request</string>
 </resources>

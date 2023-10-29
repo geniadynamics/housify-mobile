@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".model.MainActivity">
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enviar"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:text="@string/send"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/editText"
@@ -23,7 +24,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:autofillHints=""
         android:background="#E0E0E0"
-        android:hint="Escreva algo"
-        android:padding="16dp" />
+        android:hint="@string/describe_your_request"
+        android:padding="16dp"
+        tools:ignore="TextFields,TextContrastCheck,VisualLintTextFieldSize" />
+
 </RelativeLayout>
