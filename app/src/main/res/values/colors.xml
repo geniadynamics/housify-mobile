@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Base colors -->
+    <color name="one_dark_black">#282C34</color>
+    <color name="one_dark_gray">#ABB2BF</color>
+    <color name="one_dark_gray_light">#B6BDCA</color>
+    <color name="one_dark_gray_dark">#3E4451</color>
+    <color name="one_dark_white">#FFFFFF</color>
+
+    <!-- Your app's branding colors -->
+    <color name="primary">#61AFEF</color>
+    <color name="primary_variant">#528BCC</color>
+    <color name="secondary">#98C379</color>
+    <color name="secondary_variant">#7DAF65</color>
+    <!-- ... other colors as needed -->
 </resources>
