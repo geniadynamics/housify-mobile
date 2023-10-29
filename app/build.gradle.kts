@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.geniadynamics.housify"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.geniadynamics.housify"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
