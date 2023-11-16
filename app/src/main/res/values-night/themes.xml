@@ -9,5 +9,8 @@
         <item name="android:windowBackground">@color/one_dark_black</item>
         <item name="android:textColor">@color/one_dark_gray</item>
         <!-- Other item styles can be defined here -->
+
+        <item name="logo_project">@drawable/p_logo_white</item>
+        <item name="logo_company">@drawable/c_logo_white</item>
     </style>
 </resources>
