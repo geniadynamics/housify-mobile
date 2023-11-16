@@ -1,4 +1,4 @@
-package com.geniadynamics.housify.ui.login
+package org.geniadynamics.housify.ui.login
 
 import android.app.Activity
 import androidx.lifecycle.Observer
@@ -12,11 +12,11 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
-import com.geniadynamics.housify.databinding.ActivityLoginBinding
+import org.geniadynamics.housify.databinding.ActivityLoginBinding
 
-import com.geniadynamics.housify.R
-import com.geniadynamics.housify.viewmodel.LoginViewModel
-import com.geniadynamics.housify.viewmodel.LoginViewModelFactory
+import org.geniadynamics.housify.R
+import org.geniadynamics.housify.viewmodel.LoginViewModel
+import org.geniadynamics.housify.viewmodel.LoginViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
 

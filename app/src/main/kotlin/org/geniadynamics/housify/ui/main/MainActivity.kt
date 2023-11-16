@@ -1,13 +1,13 @@
-package com.geniadynamics.housify.ui.main
+package org.geniadynamics.housify.ui.main
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import com.geniadynamics.housify.R
+import org.geniadynamics.housify.R
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
-import com.geniadynamics.housify.ui.login.LoginActivity
+import org.geniadynamics.housify.ui.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 

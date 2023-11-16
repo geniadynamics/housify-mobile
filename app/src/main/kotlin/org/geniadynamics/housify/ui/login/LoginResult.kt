@@ -1,4 +1,4 @@
-package com.geniadynamics.housify.ui.login
+package org.geniadynamics.housify.ui.login
 
 /**
  * Authentication result : success (user details) or error message.

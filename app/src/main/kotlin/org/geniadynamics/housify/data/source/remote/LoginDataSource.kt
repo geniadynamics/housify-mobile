@@ -1,7 +1,7 @@
-package com.geniadynamics.housify.data.source.remote
+package org.geniadynamics.housify.data.source.remote
 
-import com.geniadynamics.housify.data.model.LoggedInUser
-import com.geniadynamics.housify.utility.Result
+import org.geniadynamics.housify.data.model.LoggedInUser
+import org.geniadynamics.housify.utility.Result
 import java.io.IOException
 import java.util.UUID
 

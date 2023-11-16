@@ -3,7 +3,7 @@
     <!-- Base colors -->
     <color name="one_dark_black">#282C34</color>
     <color name="one_dark_gray">#ABB2BF</color>
-    <color name="one_dark_gray_light">#B6BDCA</color>
+    <color name="one_dark_gray_light">#2f667788</color>
     <color name="one_dark_gray_dark">#3E4451</color>
     <color name="one_dark_white">#FFFFFF</color>
 

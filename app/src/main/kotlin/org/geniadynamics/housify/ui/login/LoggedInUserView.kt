@@ -1,4 +1,4 @@
-package com.geniadynamics.housify.ui.login
+package org.geniadynamics.housify.ui.login
 
 /**
  * User details post authentication that is exposed to the UI

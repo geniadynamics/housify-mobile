@@ -1,4 +1,4 @@
-package com.geniadynamics.housify.utility
+package org.geniadynamics.housify.utility
 
 /**
  * A generic class that holds a value with its loading status.
