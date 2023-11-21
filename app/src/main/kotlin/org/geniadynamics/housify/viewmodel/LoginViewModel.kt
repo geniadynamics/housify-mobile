@@ -1,16 +1,16 @@
-package com.geniadynamics.housify.viewmodel
+package org.geniadynamics.housify.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import com.geniadynamics.housify.data.repository.LoginRepository
-import com.geniadynamics.housify.utility.Result
+import org.geniadynamics.housify.data.repository.LoginRepository
+import org.geniadynamics.housify.utility.Result
 
-import com.geniadynamics.housify.R
-import com.geniadynamics.housify.ui.login.LoggedInUserView
-import com.geniadynamics.housify.ui.login.LoginFormState
-import com.geniadynamics.housify.ui.login.LoginResult
+import org.geniadynamics.housify.R
+import org.geniadynamics.housify.ui.login.LoggedInUserView
+import org.geniadynamics.housify.ui.login.LoginFormState
+import org.geniadynamics.housify.ui.login.LoginResult
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
