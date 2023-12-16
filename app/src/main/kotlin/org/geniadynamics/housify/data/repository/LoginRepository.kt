@@ -1,8 +1,8 @@
-package com.geniadynamics.housify.data.repository
+package org.geniadynamics.housify.data.repository
 
-import com.geniadynamics.housify.data.model.LoggedInUser
-import com.geniadynamics.housify.data.source.remote.LoginDataSource
-import com.geniadynamics.housify.utility.Result
+import org.geniadynamics.housify.data.model.LoggedInUser
+import org.geniadynamics.housify.data.source.remote.LoginDataSource
+import org.geniadynamics.housify.utility.Result
 
 /**
  * Class that requests authentication and user information from the remote data source and

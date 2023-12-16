@@ -1,19 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base colors -->
+    <!-- Original One Dark Colors -->
     <color name="one_dark_black">#282C34</color>
     <color name="one_dark_gray">#ABB2BF</color>
-    <color name="one_dark_gray_light">#B6BDCA</color>
+    <color name="one_dark_gray_light">#2f667788</color>
     <color name="one_dark_gray_dark">#3E4451</color>
     <color name="one_dark_white">#FFFFFF</color>
 
-    <color name="black">#000000</color>>
-    <color name="white">#FFFFFF</color>>
+    <!-- Basic Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 
-    <!-- Your app's branding colors -->
+    <!-- Primary Colors -->
     <color name="primary">#61AFEF</color>
     <color name="primary_variant">#528BCC</color>
+
+    <!-- Secondary Colors -->
     <color name="secondary">#98C379</color>
     <color name="secondary_variant">#7DAF65</color>
-    <!-- ... other colors as needed -->
+
+    <!-- Expanded Grayscale -->
+    <color name="gray_1">#F2F2F2</color>
+    <color name="gray_2">#D9D9D9</color>
+    <color name="gray_3">#BFBFBF</color>
+    <color name="gray_4">#A6A6A6</color>
+    <color name="gray_5">#8C8C8C</color>
+    <color name="gray_6">#737373</color>
+
+    <!-- Primary Shades -->
+    <color name="primary_light_1">#8AB4F8</color>
+    <color name="primary_light_2">#A3C8FA</color>
+    <color name="primary_light_3">#BCDBFC</color>
+    <color name="primary_dark_1">#4A7AB7</color>
+    <color name="primary_dark_2">#3465A4</color>
+    <color name="primary_dark_3">#204E8A</color>
+
+    <!-- Secondary Shades -->
+    <color name="secondary_light_1">#AED492</color>
+    <color name="secondary_light_2">#C3DFAB</color>
+    <color name="secondary_light_3">#D8EAC3</color>
+    <color name="secondary_dark_1">#70955D</color>
+    <color name="secondary_dark_2">#557B4D</color>
+    <color name="secondary_dark_3">#395F3C</color>
+
+    <!-- Red Variants -->
+    <color name="red_primary">#E06C75</color>
+    <color name="red_light_1">#EB848B</color>
+    <color name="red_light_2">#F29CA1</color>
+    <color name="red_dark_1">#C2565A</color>
+    <color name="red_dark_2">#A34040</color>
+
+    <!-- Orange Variants -->
+    <color name="orange_primary">#D19A66</color>
+    <color name="orange_light_1">#D9AA76</color>
+    <color name="orange_light_2">#E2BA86</color>
+    <color name="orange_dark_1">#B87F4A</color>
+    <color name="orange_dark_2">#9F6935</color>
+
+    <!-- Purple Variants -->
+    <color name="purple_primary">#C678DD</color>
+    <color name="purple_light_1">#D08BE4</color>
+    <color name="purple_light_2">#DB9EEB</color>
+    <color name="purple_dark_1">#AE62C7</color>
+    <color name="purple_dark_2">#934BB1</color>
+
+    <!-- Additional Accent Colors -->
+    <color name="accent_green">#98C379</color>
+    <color name="accent_blue">#56B6C2</color>
+    <color name="accent_yellow">#E5C07B</color>
 </resources>
+

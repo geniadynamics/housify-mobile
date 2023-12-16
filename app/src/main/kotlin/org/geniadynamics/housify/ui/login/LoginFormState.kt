@@ -1,4 +1,4 @@
-package com.geniadynamics.housify.ui.login
+package org.geniadynamics.housify.ui.login
 
 /**
  * Data validation state of the login form.

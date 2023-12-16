@@ -1,9 +1,9 @@
-package com.geniadynamics.housify.viewmodel
+package org.geniadynamics.housify.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.geniadynamics.housify.data.source.remote.LoginDataSource
-import com.geniadynamics.housify.data.repository.LoginRepository
+import org.geniadynamics.housify.data.source.remote.LoginDataSource
+import org.geniadynamics.housify.data.repository.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
