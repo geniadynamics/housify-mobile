@@ -13,4 +13,22 @@
     <string name="login_failed">"Login failed"</string>
     <string name="housify">Housify</string>
     <string name="geniadynamics">GeniaDynamics</string>
+    <string name="register">Register</string>
+    <string name="pick_birth_date">Pick Birth Date</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="descreva_seu_pedido">Describe your request</string>
+    <string name="enviar">Send</string>
+    <string name="prompt_first_name">First Name</string>
+    <string name="prompt_last_name">Last Name</string>
+    <string name="prompt_phone_number">Phone number</string>
+    <string name="action_create_account">Create account</string>
+    <string name="prompt_subscription_level">Subscription level</string>
+    <string name="prompt_birth_date">Birth Date</string>
+    <string name="create_account">Create account</string>
+    <string name="already_have_account">Already have account?</string>
+    <string name="optional">(Optional)</string>
 </resources>
