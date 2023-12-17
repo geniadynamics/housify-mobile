@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="editTextLastName" type="id" />
+    <item name="btnRegister" type="id" />
+    <item name="btnPickBirthDate" type="id" />
+    <item name="btnPickBirthDateh" type="id" />
+    <item name="spinnerSubscriptionLevel" type="id" />
+    <item name="editTextPassword" type="id" />
+    <item name="editTextEmail" type="id" />
+    <item name="editTextPhoneNumber" type="id" />
+    <item name="editTextFirstName" type="id" />
+    <item name="firstName" type="id" />
+    <item name="lastName" type="id" />
+    <item name="phoneNumber" type="id" />
+    <item name="email" type="id" />
+    <item name="subscriptionLevel" type="id" />
+    <item name="birthDate" type="id" />
+    <item name="createAccount" type="id" />
+    <string-array name="niveis_subscricao">
+        <item>Free</item>
+        <item>Tier</item>
+        <item>Pro Tier</item>
+    </string-array>
+</resources>
