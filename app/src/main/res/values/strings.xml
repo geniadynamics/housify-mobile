@@ -2,6 +2,8 @@
     <string name="app_name">Housify</string>
     <string name="send">Send</string>
     <string name="describe_your_request">Describe your request</string>
+    <string name="generate_image">Generate Image</string>
+    <string name="edit_image">Edit Image</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
