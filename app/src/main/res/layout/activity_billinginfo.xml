@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,6 +11,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".ui.login.RegisterActivity">
 
+    <!-- Seção para informações do cartão -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
@@ -22,22 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="?attr/logo_project"
         tools:ignore="ImageContrastCheck" />
-
-    <EditText
-        android:id="@+id/firstName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:autofillHints="@string/prompt_first_name"
-        android:background="@drawable/input_bg"
-        android:hint="@string/first_name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:padding="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/lastName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/cardNumberEditText"
@@ -52,137 +36,192 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstName"
-        tools:ignore="TextContrastCheck" />
-
-    <EditText
-        android:id="@+id/lastName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:autofillHints="@string/prompt_last_name"
-        android:background="@drawable/input_bg"
-        android:hint="@string/last_name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/firstName"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:ignore="TextContrastCheck" />
 
     <LinearLayout
-        android:id="@+id/phoneNumberLayout"
+        android:id="@+id/expCvvLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/lastName"
+        app:layout_constraintTop_toBottomOf="@+id/cardNumberEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="8dp">
 
         <EditText
-            android:id="@+id/phoneNumber"
+            android:id="@+id/expirationDateEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="6dp"
-            android:autofillHints="@string/prompt_phone_number"
+            android:layout_marginEnd="4dp"
+            android:autofillHints=""
             android:background="@drawable/input_bg"
-            android:hint="@string/phone_number"
-            android:inputType="phone"
-            android:minHeight="40dp"
+            android:hint="@string/expiration_date"
+            android:inputType="text"
+            android:minHeight="48dp"
             android:padding="10dp"
-            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+            tools:ignore="TextContrastCheck,TextFields" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/cvvEditText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="6dp"
-            android:text="@string/optional"
-            android:textColor="@android:color/darker_gray"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="4dp"
+            android:autofillHints=""
+            android:background="@drawable/input_bg"
+            android:hint="@string/cvv_cvn"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:padding="10dp"
             tools:ignore="TextContrastCheck" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="0dp"
+    <!-- Botão de salvar para as informações do cartão -->
+    <Button
+        android:id="@+id/saveCardInfoButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:autofillHints="@string/prompt_email"
-        android:background="@drawable/input_bg"
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:padding="10dp"
+        android:layout_marginTop="16dp"
+        android:minWidth="200sp"
+        android:text="@string/save"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumberLayout"
-        tools:ignore="NotSibling,TextContrastCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/expCvvLayout"
+        tools:ignore="ContentDescription,TextContrastCheck,DuplicateSpeakableTextCheck" />
+
+    <!-- Seção para informações de endereço -->
+    <LinearLayout
+        android:id="@+id/addressLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/saveCardInfoButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp">
+
+        <EditText
+            android:id="@+id/addressLine1EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="4dp"
+            android:autofillHints=""
+            android:background="@drawable/input_bg"
+            android:hint="@string/address_line_1"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/addressLine2EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="4dp"
+            android:autofillHints=""
+            android:background="@drawable/input_bg"
+            android:hint="@string/address_line_2"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/passwordLayout"
+        android:id="@+id/postalCityLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/addressLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="8dp">
 
         <EditText
-            android:id="@+id/currentPassword"
+            android:id="@+id/postalCodeEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="6dp"
-            android:autofillHints="@string/current_password"
+            android:layout_marginEnd="4dp"
+            android:autofillHints=""
             android:background="@drawable/input_bg"
-            android:hint="@string/current_password"
-            android:imeActionLabel="@string/action_next"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
+            android:hint="@string/postal_code"
+            android:inputType="text"
             android:minHeight="48dp"
             android:padding="10dp"
             tools:ignore="TextContrastCheck" />
 
         <EditText
-            android:id="@+id/newPassword"
+            android:id="@+id/cityEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="6dp"
-            android:autofillHints="@string/new_password"
+            android:layout_marginStart="4dp"
+            android:autofillHints=""
             android:background="@drawable/input_bg"
-            android:hint="@string/new_password"
-            android:imeActionLabel="@string/action_done"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
+            android:hint="@string/city"
+            android:inputType="text"
             android:minHeight="48dp"
             android:padding="10dp"
             tools:ignore="TextContrastCheck" />
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/subscriptionSpinner"
+    <!-- Seção para informações adicionais -->
+    <LinearLayout
+        android:id="@+id/additionalInfoLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/input_bg"
-        android:entries="@array/niveis_subscricao"
-        android:minHeight="48dp"
-        android:padding="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/postalCityLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLayout"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="8dp">
 
-    <!-- Adicione seus campos adicionais aqui -->
+        <EditText
+            android:id="@+id/countryEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="4dp"
+            android:autofillHints=""
+            android:background="@drawable/input_bg"
+            android:hint="@string/country"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="TextContrastCheck" />
 
-    <!-- Botão de salvar -->
+        <EditText
+            android:id="@+id/nifEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="4dp"
+            android:autofillHints=""
+            android:background="@drawable/input_bg"
+            android:hint="@string/nif"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
+
+    <!-- Botão de salvar para as informações adicionais -->
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/saveAdditionalInfoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -190,7 +229,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subscriptionSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/additionalInfoLayout"
         android:minWidth="200sp"
         tools:ignore="ContentDescription,TextContrastCheck" />
 
