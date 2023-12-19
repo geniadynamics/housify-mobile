@@ -19,6 +19,7 @@
     <string name="register">Register</string>
     <string name="signup">Signup</string>
     <string name="pick_birth_date">Pick Birth Date</string>
+    <string name="add_credit_card">Add credit card</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="phone_number">Phone Number</string>
@@ -53,6 +54,5 @@
     <string name="nif">NIF</string>
     <string name="changing_payment_data">Changing Payment Data</string>
     <string name="changing_billing_data">Changing Billing Data</string>
-
-
+    <string name="add_billing_info">Insert Billing Info</string>
 </resources>
