@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity"
+    android:background="#61afef">
+
+
+    <TextView
+        android:id="@+id/textWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WELCOME"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textSize="32dp"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/textTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textWelcome"
+        android:text="TO"
+        android:layout_centerHorizontal="true"
+        android:textSize="32dp"
+        android:textColor="@color/white"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/housify"
+        android:layout_below="@id/textTo"
+        android:layout_centerHorizontal="true"
+        android:src="?attr/logo_project"
+        tools:ignore="ImageContrastCheck" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/dontHaveAccount"
+        android:text="@string/login"
+        android:backgroundTint="@color/white"
+        android:textColor="#61afef"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/dontHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/dont_have_account"
+        android:layout_marginBottom="200dp"
+        android:hint="@string/dont_have_account"
+        android:text="@string/dont_have_account"
+        android:textColor="#FFFFFF"
+        android:minWidth="100sp"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/dontHaveAccount"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="-15dp"
+        android:layout_toEndOf="@id/dontHaveAccount"
+        android:contentDescription="@string/signup"
+        android:hint="@string/signup"
+        android:minWidth="50sp"
+        android:text="@string/signup"
+        android:textColor="#FFFFFF"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

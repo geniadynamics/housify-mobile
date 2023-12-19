@@ -13,9 +13,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_welcome)
 
-        val intent = Intent(this, LoginActivity::class.java)
+/*        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
 
         val editText = findViewById<EditText>(R.id.editText)
@@ -28,6 +28,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Escreva algo antes de enviar", Toast.LENGTH_SHORT).show()
             }
-        }
+        }*/
     }
 }
