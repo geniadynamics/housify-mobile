@@ -14,29 +14,36 @@
         android:layout_centerHorizontal="true"
         android:src="?attr/logo_project"
         tools:ignore="ImageContrastCheck" />
+
     <Button
         android:id="@+id/generateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView"
-        android:layout_marginTop="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:hint="@string/generate_image"
+        android:minWidth="200sp"
         android:text="@string/generate_image"
         android:textColor="#FFFFFF"
-        android:minWidth="200sp"
         tools:ignore="ContentDescription,TextContrastCheck" />
+
     <Button
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_toEndOf="@id/generateButton"
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="6dp"
         android:hint="@string/edit_image"
+        android:minWidth="200sp"
         android:text="@string/edit_image"
         android:textColor="#FFFFFF"
-        android:minWidth="200sp"
         tools:ignore="ContentDescription,TextContrastCheck" />
     <View
         android:id="@+id/seperatorLine"
