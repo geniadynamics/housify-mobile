@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/housify"
+        android:layout_centerHorizontal="true"
+        android:src="?attr/logo_project"
+        tools:ignore="ImageContrastCheck" />
+
+    <View
+        android:id="@+id/emptyView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_below="@id/imageView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="50dp"/>
+
+    <TextView
+        android:id="@+id/textInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_marginLeft="50dp"
+        android:text="Payment Information:"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/cardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/textInformation"
+        android:layout_alignStart="@id/textInformation"
+        android:layout_alignEnd="@id/emptyView"
+        android:autofillHints="@string/card_number_credit_or_debit"
+        android:background="@drawable/input_bg"
+        android:hint="@string/card_number_credit_or_debit"
+        android:inputType="phone"
+        android:minHeight="30dp"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/expirationDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/cardNumber"
+        android:layout_alignStart="@id/textInformation"
+        android:layout_alignEnd="@id/textInformation"
+        android:autofillHints="@string/expiration_date"
+        android:background="@drawable/input_bg"
+        android:hint="@string/expiration_date"
+        android:inputType="date"
+        android:minHeight="30dp"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/uniqueCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/cardNumber"
+        android:layout_toRightOf="@id/expirationDate"
+        android:layout_marginLeft="50dp"
+        android:layout_alignEnd="@id/emptyView"
+        android:autofillHints="@string/cvv_cvn"
+        android:background="@drawable/input_bg"
+        android:hint="@string/cvv_cvn"
+        android:inputType="number"
+        android:minHeight="30dp"
+        tools:ignore="TextContrastCheck" />
+
+    <CheckBox
+        android:id="@+id/saveCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save card"
+        android:layout_below="@id/expirationDate"
+        android:layout_alignStart="@id/expirationDate" />
+
+    <Button
+        android:id="@+id/addCreditCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/add_credit_card"
+        android:hint="@string/add_credit_card"
+        android:text="@string/add_credit_card"
+        android:layout_below="@id/saveCard"
+        android:layout_alignStart="@id/saveCard"
+        android:layout_alignEnd="@id/emptyView"/>
+
+    <TextView
+        android:id="@+id/textInvoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addCreditCard"
+        android:layout_alignStart="@id/textInformation"
+        android:layout_marginTop="10dp"
+        android:text="Invoice:"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/address1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/textInvoice"
+        android:layout_alignStart="@id/textInformation"
+        android:layout_alignEnd="@id/emptyView"
+        android:autofillHints="@string/address_line_1"
+        android:background="@drawable/input_bg"
+        android:hint="@string/address_line_1"
+        android:inputType="text"
+        android:minHeight="30dp"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/address2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/address1"
+        android:layout_alignStart="@id/textInformation"
+        android:layout_alignEnd="@id/emptyView"
+        android:autofillHints="@string/address_line_2"
+        android:background="@drawable/input_bg"
+        android:hint="@string/address_line_2"
+        android:inputType="text"
+        android:minHeight="30dp"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextPostalCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/address2"
+        android:layout_alignStart="@id/textInformation"
+        android:layout_alignEnd="@id/emptyView"
+        android:autofillHints="@string/postal_code"
+        android:background="@drawable/input_bg"
+        android:hint="@string/postal_code"
+        android:inputType="textPostalAddress"
+        android:minHeight="30dp"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/editTextPostalCode"
+        android:layout_alignStart="@id/textInformation"
+        android:layout_alignEnd="@id/emptyView"
+        android:autofillHints="@string/city"
+        android:background="@drawable/input_bg"
+        android:hint="@string/city"
+        android:inputType="text"
+        android:minHeight="30dp"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/editTextCity"
+        android:layout_alignStart="@id/textInformation"
+        android:layout_alignEnd="@id/emptyView"
+        android:autofillHints="@string/country"
+        android:background="@drawable/input_bg"
+        android:hint="@string/country"
+        android:inputType="text"
+        android:minHeight="30dp"
+        tools:ignore="TextContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextNif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/editTextCountry"
+        android:layout_alignStart="@id/textInformation"
+        android:layout_alignEnd="@id/emptyView"
+        android:autofillHints="@string/nif"
+        android:background="@drawable/input_bg"
+        android:hint="@string/nif"
+        android:inputType="number"
+        android:minHeight="30dp"
+        tools:ignore="TextContrastCheck" />
+
+    <Button
+        android:id="@+id/insertBillingInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/add_billing_info"
+        android:hint="@string/add_billing_info"
+        android:text="@string/add_billing_info"
+        android:layout_below="@id/switchMail"
+        android:layout_alignStart="@id/saveCard"
+        android:layout_alignEnd="@id/emptyView"/>
+
+    <Switch
+        android:id="@+id/switchMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNif"
+        android:layout_alignStart="@id/saveCard"
+        android:layout_alignEnd="@id/emptyView"
+        android:text="Send Invoice to Mail:" />
+
+
+</RelativeLayout>
