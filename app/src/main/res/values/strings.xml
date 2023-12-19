@@ -4,6 +4,7 @@
     <string name="describe_your_request">Describe your request</string>
     <string name="generate_image">Generate Image</string>
     <string name="edit_image">Edit Image</string>
+    <string name="login">Login</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -16,6 +17,7 @@
     <string name="housify">Housify</string>
     <string name="geniadynamics">GeniaDynamics</string>
     <string name="register">Register</string>
+    <string name="signup">Signup</string>
     <string name="pick_birth_date">Pick Birth Date</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
@@ -32,5 +34,6 @@
     <string name="prompt_birth_date">Birth Date</string>
     <string name="create_account">Create account</string>
     <string name="already_have_account">Already have account?</string>
+    <string name="dont_have_account">Don't have an account?</string>
     <string name="optional">(Optional)</string>
 </resources>
