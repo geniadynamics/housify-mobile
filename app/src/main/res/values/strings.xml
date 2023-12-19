@@ -41,4 +41,6 @@
     <string name="action_next">(Action Next)</string>
     <string name="current_password">(Current Password)</string>
     <string name="save">Save</string>
+    <string name="card_holder_name">Card Holder Name</string>
+    <string name="card_number_credit_or_debit">Card Number (Credit or Debit)</string>
 </resources>
