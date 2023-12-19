@@ -52,5 +52,7 @@
     <string name="city">City</string>
     <string name="country">Country</string>
     <string name="nif">NIF</string>
+    <string name="changing_payment_data">Changing Payment Data</string>
+    <string name="changing_billing_data">Changing Billing Data</string>
     <string name="add_billing_info">Insert Billing Info</string>
 </resources>
