@@ -34,7 +34,7 @@
     <string name="prompt_birth_date">Birth Date</string>
     <string name="create_account">Create account</string>
     <string name="already_have_account">Already have account?</string>
-    <string name="dont_have_account">Don't have an account?</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
     <string name="optional">(Optional)</string>
     <string name="new_password">(New Password)</string>
     <string name="action_done">(Action Code)</string>
