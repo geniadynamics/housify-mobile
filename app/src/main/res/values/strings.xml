@@ -36,4 +36,9 @@
     <string name="already_have_account">Already have account?</string>
     <string name="dont_have_account">Don't have an account?</string>
     <string name="optional">(Optional)</string>
+    <string name="new_password">(New Password)</string>
+    <string name="action_done">(Action Code)</string>
+    <string name="action_next">(Action Next)</string>
+    <string name="current_password">(Current Password)</string>
+    <string name="save">Save</string>
 </resources>
