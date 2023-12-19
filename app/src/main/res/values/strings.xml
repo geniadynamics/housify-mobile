@@ -56,4 +56,5 @@
     <string name="changing_billing_data">Changing Billing Data</string>
     <string name="add_billing_info">Insert Billing Info</string>
     <string name="to">TO</string>
+    <string name="title_activity_welcome">Welcome</string>
 </resources>
