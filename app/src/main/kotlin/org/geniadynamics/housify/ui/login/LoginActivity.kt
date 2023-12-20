@@ -15,6 +15,7 @@ import android.widget.Toast
 import org.geniadynamics.housify.databinding.ActivityLoginBinding
 
 import org.geniadynamics.housify.R
+import org.geniadynamics.housify.ui.main.MainActivity
 import org.geniadynamics.housify.viewmodel.LoginViewModel
 import org.geniadynamics.housify.viewmodel.LoginViewModelFactory
 
@@ -104,13 +105,16 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
-        // TODO : initiate successful logged in experience
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
+        Toast.makeText(applicationContext, "$welcome $displayName", Toast.LENGTH_LONG).show()
+
+        // Save login status
+        val sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+        sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
+
+        setResult(Activity.RESULT_OK)
+        finish()
     }
+
 
     private fun showLoginFailed(@StringRes errorString: Int) {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
