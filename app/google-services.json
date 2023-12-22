@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "565298998288",
+    "project_id": "housify-467fe",
+    "storage_bucket": "housify-467fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565298998288:android:faae86150e21e2422c6e95",
+        "android_client_info": {
+          "package_name": "org.geniadynamics.housify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDujBfLl--V-Bzm7eoHFONt7NSLQb5Aw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
