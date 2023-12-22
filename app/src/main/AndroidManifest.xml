@@ -25,6 +25,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.welcome.WelcomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_welcome" />
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:exported="false"
+            android:label="Home" />
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
@@ -42,7 +50,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/primary" />
-
     </application>
 
 </manifest>
