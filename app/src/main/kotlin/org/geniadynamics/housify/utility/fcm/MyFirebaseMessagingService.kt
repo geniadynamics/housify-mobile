@@ -1,4 +1,4 @@
-package org.geniadynamics.housify
+package org.geniadynamics.housify.utility.fcm
 
 import com.google.firebase.messaging.FirebaseMessagingService
 

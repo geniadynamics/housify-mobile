@@ -57,4 +57,9 @@
     <string name="add_billing_info">Insert Billing Info</string>
     <string name="to">TO</string>
     <string name="title_activity_welcome">Welcome</string>
+    <string name="open_camera">Open Camera</string>
+    <string name="generate">Generate</string>
+    <string name="edit">Edit</string>
+    <string name="requesttype">requestType</string>
+    <string name="discover">Discover</string>
 </resources>

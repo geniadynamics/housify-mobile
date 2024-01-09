@@ -1,18 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.Housify" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your theme here with the colors defined in colors.xml -->
+
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_variant</item>
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorSecondaryVariant">@color/secondary_variant</item>
         <item name="android:windowBackground">@color/one_dark_black</item>
         <item name="android:textColor">@color/one_dark_gray</item>
-        <!-- Other item styles can be defined here -->
+
 
         <item name="android:statusBarColor">@color/black</item>>
 
         <item name="logo_project">@drawable/p_logo_white</item>
         <item name="logo_company">@drawable/c_logo_white</item>
+    </style>
+
+    <style name="CShipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor"> @color/chip_bg_color</item>
+        <item name="android:textColor"> @color/chip_text_color</item>
     </style>
 </resources>
