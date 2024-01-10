@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main.MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/housify"
+        android:layout_centerHorizontal="true"
+        android:src="?attr/logo_project"
+        tools:ignore="ImageContrastCheck" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_button_selected"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="30dp">
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true">
+            <com.google.android.material.chip.Chip
+                android:id="@+id/EditOpt"
+                android:textSize="16sp"
+                android:layout_marginEnd="-5sp"
+                style="@style/CShipStyle"
+                android:layout_marginStart="8sp"
+                android:text="@string/generate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.google.android.material.chip.Chip
+                android:textSize="16sp"
+                android:id="@+id/GenOpt"
+                style="@style/CShipStyle"
+                android:text="@string/edit"
+                android:layout_marginStart="-5sp"
+                android:layout_marginEnd="-5sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.google.android.material.chip.Chip
+                android:textSize="16sp"
+                android:id="@+id/DiscOpt"
+                style="@style/CShipStyle"
+                android:text="@string/discover"
+                android:layout_marginStart="-5sp"
+                android:layout_marginEnd="8sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.chip.ChipGroup>
+    </RelativeLayout>
+
+<!--    <ToggleButton-->
+<!--        android:id="@+id/toggleButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/imageView"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:background="@drawable/rounded_button_default"-->
+<!--        android:text="@string/requesttype"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textOff="@string/generate"-->
+<!--        android:textOn="@string/edit" />-->
+
+
+
+<!--    <Button-->
+<!--        android:id="@+id/submitButton"-->
+<!--        app:backgroundTint="@color/one_dark_gray_dark"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:text="@string/send"-->
+<!--        tools:ignore="TextContrastCheck" />-->
+
+    <RelativeLayout
+        android:layout_width="380dp"
+        android:layout_height="48sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp">
+
+        <EditText
+            android:id="@+id/editText"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints=""
+            android:background="@drawable/input_bg"
+            android:hint="@string/describe_your_request"
+            android:padding="8sp"
+            android:paddingStart="16sp"
+            tools:ignore="RtlSymmetry,TextContrastCheck,TextFields,VisualLintTextFieldSize" />
+
+        <Button
+            android:id="@+id/btnOpenCamera"
+            app:backgroundTint="@color/one_dark_gray_dark"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignEnd="@id/editText"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="4dp"
+            android:drawableEnd="@android:drawable/ic_menu_camera"
+            android:padding="4dp"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnSend"
+            app:backgroundTint="@color/one_dark_gray_dark"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignEnd="@id/editText"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:drawableEnd="@android:drawable/ic_menu_send"
+            android:padding="4dp"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="80dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/InfRequestRview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+</RelativeLayout>
