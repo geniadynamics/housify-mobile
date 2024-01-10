@@ -62,4 +62,6 @@
     <string name="edit">Edit</string>
     <string name="requesttype">requestType</string>
     <string name="discover">Discover</string>
+    <string name="additional_text">Additional Text</string>
+    <string name="small_title">Small Title</string>
 </resources>
