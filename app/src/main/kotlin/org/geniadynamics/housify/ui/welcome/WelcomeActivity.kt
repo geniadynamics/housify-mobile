@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import org.geniadynamics.housify.R
 import org.geniadynamics.housify.ui.login.LoginActivity
+import org.geniadynamics.housify.ui.register.RegisterActivity
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -13,13 +14,13 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-//        val btnCreateUser = findViewById<Button>(R.id.btnRegister)
+        val btnCreateUser = findViewById<Button>(R.id.signUp)
         val btnLogin = findViewById<Button>(R.id.loginButton)
 
-//        btnCreateUser.setOnClickListener {
-//            val intent = Intent(this, UserCreationActivity::class.java)
-//            startActivity(intent)
-//        }
+        btnCreateUser.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
 
         btnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
