@@ -1,5 +1,6 @@
 package org.geniadynamics.housify.ui.home
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,13 +17,22 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import org.geniadynamics.housify.R
 import org.geniadynamics.housify.data.model.Item
+import org.geniadynamics.housify.ui.visimage.VisImageActivity
 
 //class InferenceRequestAdapter {
 //}
+interface OnItemClickListener {
+    fun onItemClick(item: Item)
+}
 
 class MyAdapter(private val context: Context, private var items: List<Item>) :
-
     RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+
+    private var itemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.itemClickListener = listener
+    }
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val mainImage: ImageView = view.findViewById(R.id.mainImage)
@@ -35,6 +45,7 @@ class MyAdapter(private val context: Context, private var items: List<Item>) :
         val view = LayoutInflater.from(parent.context).inflate(R.layout.inference_info_home, parent, false)
         return MyViewHolder(view)
     }
+
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = items[position]
@@ -63,6 +74,10 @@ class MyAdapter(private val context: Context, private var items: List<Item>) :
                 RequestOptions()
                 .timeout(5000))
             .into(holder.mainImage)
+
+        holder.mainImage.setOnClickListener {
+            itemClickListener?.onItemClick(item)
+        }
 
     }
 
