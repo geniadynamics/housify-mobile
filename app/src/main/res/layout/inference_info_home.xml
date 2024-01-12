@@ -11,6 +11,7 @@
         android:layout_marginStart="18dp"
         android:src="@drawable/user_icon" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
