@@ -66,4 +66,7 @@
     <string name="discover">Discover</string>
     <string name="additional_text">Additional Text</string>
     <string name="small_title">Small Title</string>
+    <string name="logout">Logout</string>
+    <string name="account_management">Account_Management</string>
+    <string name="about">About</string>
 </resources>
