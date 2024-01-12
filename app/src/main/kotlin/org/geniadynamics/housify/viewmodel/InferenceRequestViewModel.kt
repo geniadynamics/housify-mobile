@@ -14,7 +14,7 @@ class InferenceViewModel(private val repository: InferenceRepository) : ViewMode
 
     fun getUserRequests(email: String) {
         repository.getUserRequests(email).observeForever { newData ->
-            responses.value = newData
+            responses.value = newData.reversed()
         }
     }
 

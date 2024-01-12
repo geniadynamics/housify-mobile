@@ -6,12 +6,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import org.geniadynamics.housify.R
 import org.geniadynamics.housify.data.model.InferenceRequest
 import org.geniadynamics.housify.data.model.InferenceResponse
@@ -24,41 +27,6 @@ import org.geniadynamics.housify.viewmodel.InferenceViewModel
 import org.geniadynamics.housify.viewmodel.InferenceViewModelFactory
 
 class HomeActivity : AppCompatActivity() {
-
-//    private val viewModel: InferenceRequestViewModel by viewModels()
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_home)
-//
-//        val btnOpenCamera = findViewById<Button>(R.id.btnOpenCamera)
-//        btnOpenCamera.setOnClickListener {
-//            val intent = Intent(this, CameraActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        val recyclerView: RecyclerView = findViewById(R.id.InfRequestRview)
-//        val adapter = MyAdapter(this, emptyList())
-//
-//        adapter.setOnItemClickListener(object : OnItemClickListener {
-//            override fun onItemClick(item: InferenceResponse) {
-//                val intent = Intent(this@HomeActivity, VisImageActivity::class.java).apply {
-//                    putExtra("userText", item.input)
-//                    putExtra("imageUrl", "https://housify.geniadynamics.org/media/gen/" + item.img_output + ".png")
-//                    putExtra("additionalText", item.output_description)
-//                    putExtra("title", item.output_classification)
-//                }
-//                startActivity(intent)
-//            }
-//        })
-//
-//        recyclerView.adapter = adapter
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//
-//        viewModel.inferenceResponse.observe(this) { responses ->
-//            adapter.updateItems(responses)
-//        }
-//    }
     private lateinit var viewModel: InferenceViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: InferenceAdapter
@@ -67,55 +35,92 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val apiService = RetrofitClient.instance.create(ApiService::class.java)
-        val repository = InferenceRepository(apiService)
-        val factory = InferenceViewModelFactory(repository)
-
-        viewModel = ViewModelProvider(this, factory).get(InferenceViewModel::class.java)
+        initializeComponents()
         setupRecyclerView()
+        setupUserInteraction()
+
 
         viewModel.getResponses().observe(this, Observer { data ->
             adapter = InferenceAdapter(data)
             recyclerView.adapter = adapter
         })
 
-        val userEmail = "diogo.bernardo.dev@gmail.com"
-        viewModel.getUserRequests(userEmail)
+        viewModel.getUserRequests("diogo.bernardo.dev@gmail.com")
+    }
 
+
+
+    private fun initializeComponents() {
+        val apiService = RetrofitClient.instance.create(ApiService::class.java)
+        val repository = InferenceRepository(apiService)
+        val factory = InferenceViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, factory).get(InferenceViewModel::class.java)
+    }
+
+    private fun handleSendButtonClick(userInputTextView: TextView, progressBar: ProgressBar, sendButton: Button) {
+        val userInput = userInputTextView.text.toString()
+        val request = InferenceRequest(input = userInput, user = "diogo.bernardo.dev@gmail.com")
+
+        progressBar.visibility = View.VISIBLE
+        userInputTextView.isEnabled = false
+        sendButton.isEnabled = false
+
+        viewModel.postInferenceRequest(request).observe(this, Observer { response ->
+            progressBar.visibility = View.GONE
+            userInputTextView.isEnabled = true
+            sendButton.isEnabled = true
+            userInputTextView.text = ""
+        })
+    }
+
+    private fun handleChipSelection(checkedId: Int) {
+        when (checkedId) {
+            R.id.EditOpt -> {
+                Toast.makeText(this, "Edit option selected", Toast.LENGTH_SHORT).show()
+                // Additional logic for Edit option
+            }
+            R.id.GenOpt -> {
+                Toast.makeText(this, "Generate option selected", Toast.LENGTH_SHORT).show()
+                // Additional logic for Generate option
+            }
+            R.id.DiscOpt -> {
+                Toast.makeText(this, "Discover option selected", Toast.LENGTH_SHORT).show()
+                // Additional logic for Discover option
+            }
+        }
+    }
+
+    private fun setupUserInteraction() {
         val sendButton = findViewById<Button>(R.id.btnSend)
         val userInputTextView = findViewById<TextView>(R.id.editText)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        val chipGroup = findViewById<ChipGroup>(R.id.chip)
+
+        val defaultChip = findViewById<Chip>(R.id.GenOpt)
+        defaultChip.isChecked = true
 
         sendButton.setOnClickListener {
-            val userInput = userInputTextView.text.toString()
-            val request = InferenceRequest(input = userInput, user = userEmail)
-
-            progressBar.visibility = View.VISIBLE
-            userInputTextView.isEnabled = false
-            sendButton.isEnabled = false
-
-            viewModel.postInferenceRequest(request).observe(this, Observer { response ->
-                progressBar.visibility = View.GONE
-                userInputTextView.isEnabled = true
-                sendButton.isEnabled = true
-                userInputTextView.text = ""
-            })
+            handleSendButtonClick(userInputTextView, progressBar, sendButton)
         }
 
-//        viewModel.getUserRequests(userEmail).observe(this, Observer { data ->
-//            adapter = InferenceAdapter(data)
-//            recyclerView.adapter = adapter
-//        })
-
+        chipGroup.setOnCheckedChangeListener { group, checkedId ->
+            handleChipSelection(checkedId)
+        }
     }
 
 
 
     private fun setupRecyclerView() {
         recyclerView = findViewById(R.id.InfRequestRview)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        // Adapter is initially empty
+
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.reverseLayout = true
+        layoutManager.stackFromEnd = false
+
+        recyclerView.layoutManager = layoutManager
+
         adapter = InferenceAdapter(emptyList())
         recyclerView.adapter = adapter
     }
+
 }

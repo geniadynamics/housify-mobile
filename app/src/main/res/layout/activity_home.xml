@@ -23,6 +23,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginBottom="30dp">
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:singleSelection="true">
@@ -108,7 +109,7 @@
 
         <Button
             android:id="@+id/btnOpenCamera"
-            app:backgroundTint="#282c34"
+            app:backgroundTint="#000000"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignEnd="@id/editText"
@@ -124,7 +125,7 @@
 
         <Button
             android:id="@+id/btnSend"
-            app:backgroundTint="#282c34"
+            app:backgroundTint="#000000"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignEnd="@id/editText"
@@ -157,7 +158,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/InfRequestRview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            />
     </RelativeLayout>
 
 </RelativeLayout>
