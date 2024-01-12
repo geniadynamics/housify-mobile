@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ButtonStyle1" parent="Widget.AppCompat.Button">
+        <item name="android:background">?attr/button_bg1</item>
+    </style>
+</resources>
