@@ -25,11 +25,33 @@ import org.geniadynamics.housify.ui.camera.CameraActivity
 import org.geniadynamics.housify.ui.visimage.VisImageActivity
 import org.geniadynamics.housify.viewmodel.InferenceViewModel
 import org.geniadynamics.housify.viewmodel.InferenceViewModelFactory
+import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog
+import org.geniadynamics.housify.ui.login.LoginActivity
+import org.geniadynamics.housify.ui.welcome.WelcomeActivity
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel: InferenceViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: InferenceAdapter
+
+    fun showLogoutOption(view: View) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Logout")
+        builder.setMessage("Deseja sair da sua conta?")
+        builder.setPositiveButton("Sim") { _, _ ->
+
+            val intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
+        }
+        builder.setNegativeButton("Não") { _, _ ->
+
+        }
+        builder.create().show()
+    }
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
