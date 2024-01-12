@@ -14,10 +14,12 @@
 
         <item name="logo_project">@drawable/p_logo_white</item>
         <item name="logo_company">@drawable/c_logo_white</item>
+
+        <item name="button_bg1">@drawable/rounded_button_dark</item>
     </style>
 
     <style name="CShipStyle" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor"> @color/chip_bg_color</item>
-        <item name="android:textColor"> @color/chip_text_color</item>
+        <item name="chipBackgroundColor"> @color/d_chip_bg_color</item>
+        <item name="android:textColor"> @color/d_chip_text_color</item>
     </style>
 </resources>

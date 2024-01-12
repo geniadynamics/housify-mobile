@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.MainActivity">
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
@@ -15,32 +15,33 @@
         android:src="?attr/logo_project"
         tools:ignore="ImageContrastCheck" />
 
-    <ImageView
-        android:id="@+id/userIcon"
-        android:layout_width="28sp"
-        android:layout_height="28sp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:src="@drawable/user_icon" />
-
-    <TextView
-        android:id="@+id/userText"
-        android:textSize="14sp"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/userIcon"
-        android:layout_alignTop="@id/userIcon"
-        android:textColor="@color/primary"
-        android:text="User's Text" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/userText"
+            android:layout_marginStart="18dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/userIcon"
+            android:text="User's Text"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
 
     <ImageView
         android:id="@+id/mainImage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/imageView"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userText"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/additionalText"
@@ -48,7 +49,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/mainImage"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="16sp"
+        android:padding="12sp"
         android:text="@string/additional_text" />
 
     <TextView
@@ -57,7 +61,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/additionalText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:text="@string/small_title" />
-
+        android:textSize="16sp"
+        android:padding="12sp"
+        android:text="@string/small_title"
+        android:textStyle="bold" />
+    </RelativeLayout>
 </RelativeLayout>
