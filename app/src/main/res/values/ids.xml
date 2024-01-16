@@ -17,6 +17,9 @@
     <item name="birthDate" type="id" />
     <item name="createAccount" type="id" />
     <item name="userText" type="id" />
+    <item name="transferImageView" type="id" />
+    <item name="shareImageView" type="id" />
+    <item name="buttonLayout" type="id" />
     <string-array name="niveis_subscricao">
         <item>Free</item>
         <item>Tier</item>
