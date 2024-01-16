@@ -2,13 +2,15 @@ package org.geniadynamics.housify.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.activity.viewModels
+import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,14 +19,13 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import org.geniadynamics.housify.R
 import org.geniadynamics.housify.data.model.InferenceRequest
-import org.geniadynamics.housify.data.model.InferenceResponse
+import org.geniadynamics.housify.ui.login.LoginActivity
+import org.geniadynamics.housify.viewmodel.InferenceViewModel
+import org.geniadynamics.housify.viewmodel.InferenceViewModelFactory
 import org.geniadynamics.housify.data.network.ApiService
 import org.geniadynamics.housify.data.network.config.RetrofitClient
 import org.geniadynamics.housify.data.repository.InferenceRepository
-import org.geniadynamics.housify.ui.camera.CameraActivity
-import org.geniadynamics.housify.ui.visimage.VisImageActivity
-import org.geniadynamics.housify.viewmodel.InferenceViewModel
-import org.geniadynamics.housify.viewmodel.InferenceViewModelFactory
+import org.geniadynamics.housify.ui.welcome.WelcomeActivity
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel: InferenceViewModel
@@ -39,7 +40,6 @@ class HomeActivity : AppCompatActivity() {
         setupRecyclerView()
         setupUserInteraction()
 
-
         viewModel.getResponses().observe(this, Observer { data ->
             adapter = InferenceAdapter(data)
             recyclerView.adapter = adapter
@@ -48,7 +48,45 @@ class HomeActivity : AppCompatActivity() {
         viewModel.getUserRequests("diogo.bernardo.dev@gmail.com")
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.item_1 -> {
+                showLogoutConfirmationDialog()
+                true
+            }
+            R.id.item_2 -> {
+                true
+            }
+            R.id.item_3 -> {
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
+    fun showLogoutOption(view: View) {
+        val popupMenu = PopupMenu(this, view)
+        val inflater = popupMenu.menuInflater
+        inflater.inflate(R.menu.menu, popupMenu.menu)
+        popupMenu.setOnMenuItemClickListener { item ->
+            onOptionsItemSelected(item)
+        }
+        popupMenu.show()
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Logout")
+        builder.setMessage("Deseja sair da sua conta?")
+        builder.setPositiveButton("Sim") { _, _ ->
+            val intent = Intent(this, WelcomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        builder.setNegativeButton("Não") { _, _ ->
+        }
+        builder.create().show()
+    }
 
     private fun initializeComponents() {
         val apiService = RetrofitClient.instance.create(ApiService::class.java)
@@ -108,8 +146,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun setupRecyclerView() {
         recyclerView = findViewById(R.id.InfRequestRview)
 
@@ -122,5 +158,4 @@ class HomeActivity : AppCompatActivity() {
         adapter = InferenceAdapter(emptyList())
         recyclerView.adapter = adapter
     }
-
 }
