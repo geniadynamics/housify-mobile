@@ -19,33 +19,51 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import org.geniadynamics.housify.R
 import org.geniadynamics.housify.data.model.InferenceRequest
+import org.geniadynamics.housify.data.model.InferenceResponse
 import org.geniadynamics.housify.ui.login.LoginActivity
 import org.geniadynamics.housify.viewmodel.InferenceViewModel
 import org.geniadynamics.housify.viewmodel.InferenceViewModelFactory
 import org.geniadynamics.housify.data.network.ApiService
 import org.geniadynamics.housify.data.network.config.RetrofitClient
 import org.geniadynamics.housify.data.repository.InferenceRepository
+import org.geniadynamics.housify.ui.visimage.VisImageActivity
 import org.geniadynamics.housify.ui.welcome.WelcomeActivity
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel: InferenceViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: InferenceAdapter
+    private lateinit var userEmail : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+        if (sharedPreferences != null) {
+            userEmail = sharedPreferences.getString("isLoggedIn", "user")!!
+        }
 
         initializeComponents()
         setupRecyclerView()
         setupUserInteraction()
 
         viewModel.getResponses().observe(this, Observer { data ->
-            adapter = InferenceAdapter(data)
+            adapter = InferenceAdapter(this, data)
             recyclerView.adapter = adapter
+            adapter.setOnItemClickListener(object : OnItemClickListener {
+                override fun onItemClick(item: InferenceResponse) {
+                    val intent = Intent(this@HomeActivity, VisImageActivity::class.java)
+                    intent.putExtra("userText", item.input)
+                    intent.putExtra("imageUrl", item.img_output)
+                    intent.putExtra("additionalText", item.output_description)
+                    intent.putExtra("title", item.output_classification)
+                    startActivity(intent)
+                }
+            })
         })
 
-        viewModel.getUserRequests("diogo.bernardo.dev@gmail.com")
+        viewModel.getUserRequests(userEmail)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -77,13 +95,13 @@ class HomeActivity : AppCompatActivity() {
     private fun showLogoutConfirmationDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Logout")
-        builder.setMessage("Deseja sair da sua conta?")
-        builder.setPositiveButton("Sim") { _, _ ->
+        builder.setMessage("Do you really want to logout?")
+        builder.setPositiveButton("Yes") { _, _ ->
             val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
             finish()
         }
-        builder.setNegativeButton("Não") { _, _ ->
+        builder.setNegativeButton("No") { _, _ ->
         }
         builder.create().show()
     }
@@ -97,7 +115,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun handleSendButtonClick(userInputTextView: TextView, progressBar: ProgressBar, sendButton: Button) {
         val userInput = userInputTextView.text.toString()
-        val request = InferenceRequest(input = userInput, user = "diogo.bernardo.dev@gmail.com")
+        val request = InferenceRequest(input = userInput, user = userEmail)
 
         progressBar.visibility = View.VISIBLE
         userInputTextView.isEnabled = false
@@ -155,7 +173,7 @@ class HomeActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = layoutManager
 
-        adapter = InferenceAdapter(emptyList())
+        adapter = InferenceAdapter(this, data = emptyList())
         recyclerView.adapter = adapter
     }
 }
