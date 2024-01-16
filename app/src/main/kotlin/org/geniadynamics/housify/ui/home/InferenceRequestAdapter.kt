@@ -16,12 +16,13 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import org.geniadynamics.housify.R
 import org.geniadynamics.housify.data.model.InferenceResponse
-//
+
+
 ////class InferenceRequestAdapter {
 ////}
-//interface OnItemClickListener {
-//    fun onItemClick(item: InferenceResponse)
-//}
+interface OnItemClickListener {
+    fun onItemClick(item: InferenceResponse)
+}
 //
 //class MyAdapter(private val context: Context, private var items: List<InferenceResponse>) :
 //    RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
@@ -88,8 +89,15 @@ import org.geniadynamics.housify.data.model.InferenceResponse
 //
 //    override fun getItemCount() = items.size
 //}
-class InferenceAdapter(private val data: List<InferenceResponse>) :
+class InferenceAdapter(private val context: Context, private val data: List<InferenceResponse>) :
     RecyclerView.Adapter<InferenceAdapter.ViewHolder>() {
+
+    private var itemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        Log.d("InferenceAdapter", "Image clicked")
+        this.itemClickListener = listener
+    }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val userText: TextView = view.findViewById(R.id.textView)
@@ -107,9 +115,13 @@ class InferenceAdapter(private val data: List<InferenceResponse>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.userText.text = item.input
-        Glide.with(holder.mainImage.context).load(item.img_output).into(holder.mainImage)
+        Glide.with(context).load(item.img_output).into(holder.mainImage)
         holder.additionalText.text = item.output_description
         holder.titleText.text = item.output_classification
+
+        holder.mainImage.setOnClickListener {
+            itemClickListener?.onItemClick(item)
+        }
     }
 
     override fun getItemCount(): Int = data.size
