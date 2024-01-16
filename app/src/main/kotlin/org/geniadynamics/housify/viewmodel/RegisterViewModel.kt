@@ -1,5 +1,6 @@
 package org.geniadynamics.housify.viewmodel
 
+import android.content.Intent
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +11,9 @@ import org.geniadynamics.housify.ui.register.RegistResult
 import org.geniadynamics.housify.ui.register.RegistUserView
 import org.geniadynamics.housify.utility.Result
 import org.geniadynamics.housify.R
+import org.geniadynamics.housify.ui.login.LoginActivity
 import org.geniadynamics.housify.ui.login.LoginFormState
+import org.geniadynamics.housify.ui.register.RegisterActivity
 
 class RegisterViewModel(private val registerRepository:RegisterRepository) : ViewModel() {
 

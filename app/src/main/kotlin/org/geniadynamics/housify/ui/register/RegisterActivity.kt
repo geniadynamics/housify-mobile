@@ -3,6 +3,7 @@ package org.geniadynamics.housify.ui.register
 import android.os.Bundle
 import android.view.View
 import android.app.Activity
+import android.content.Intent
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import org.geniadynamics.housify.R
 import org.geniadynamics.housify.databinding.ActivityRegisterBinding
+import org.geniadynamics.housify.ui.login.LoginActivity
 import org.geniadynamics.housify.viewmodel.RegisterViewModel
 import org.geniadynamics.housify.viewmodel.RegisterViewModelFactory
 
@@ -31,6 +33,7 @@ class RegisterActivity : AppCompatActivity() {
         var password = binding.password
         var birthDate = binding.birthDate
         var register = binding.createAccount
+        var existingAccount = binding.alreadyHaveAccount
 
 
         registerViewModel =
@@ -68,6 +71,10 @@ class RegisterActivity : AppCompatActivity() {
                 password.toString(), birthDate.toString(), phone.toString())
         }
 
+        existingAccount.setOnClickListener{
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun showRegisterFailed(@StringRes errorString: Int) {
