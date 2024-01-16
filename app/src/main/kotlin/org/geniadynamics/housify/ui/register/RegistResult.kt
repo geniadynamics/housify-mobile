@@ -5,3 +5,4 @@ data class RegistResult (
     val success: RegistUserView? = null,
     val error: Int? = null
 )
+

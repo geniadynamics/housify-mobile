@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 //             if (isGranted) {
 //                 // FCM SDK (and your app) can post notifications.
 //             } else {
-//                 // TODO: Inform user that that your app will not show notifications.
+//                 // askNotificationPermission()
 //             }
 //         }
 //
