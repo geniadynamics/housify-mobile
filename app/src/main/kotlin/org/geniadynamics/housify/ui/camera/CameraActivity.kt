@@ -16,7 +16,6 @@ class CameraActivity : AppCompatActivity() {
             if (isGranted) {
                 launchCamera()
             } else {
-                // Handle the case where the user denies the permission.
                 finish()
             }
         }
