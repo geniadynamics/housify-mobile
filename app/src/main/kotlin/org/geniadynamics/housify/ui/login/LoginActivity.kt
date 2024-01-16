@@ -1,6 +1,7 @@
 package org.geniadynamics.housify.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -15,6 +16,7 @@ import android.widget.Toast
 import org.geniadynamics.housify.databinding.ActivityLoginBinding
 
 import org.geniadynamics.housify.R
+import org.geniadynamics.housify.ui.home.HomeActivity
 import org.geniadynamics.housify.ui.main.MainActivity
 import org.geniadynamics.housify.viewmodel.LoginViewModel
 import org.geniadynamics.housify.viewmodel.LoginViewModelFactory
@@ -65,7 +67,9 @@ class LoginActivity : AppCompatActivity() {
             }
             setResult(Activity.RESULT_OK)
 
-            //Complete and destroy login activity once successful
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+
             finish()
         })
 
@@ -107,9 +111,8 @@ class LoginActivity : AppCompatActivity() {
         val displayName = model.displayName
         Toast.makeText(applicationContext, "$welcome $displayName", Toast.LENGTH_LONG).show()
 
-        // Save login status
         val sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE)
-        sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
+        sharedPreferences.edit().putString("isLoggedIn", displayName).apply()
 
         setResult(Activity.RESULT_OK)
         finish()

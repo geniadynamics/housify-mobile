@@ -33,10 +33,16 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel: InferenceViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: InferenceAdapter
+    private lateinit var userEmail : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+        if (sharedPreferences != null) {
+            userEmail = sharedPreferences.getString("isLoggedIn", "user")!!
+        }
 
         initializeComponents()
         setupRecyclerView()
@@ -57,7 +63,7 @@ class HomeActivity : AppCompatActivity() {
             })
         })
 
-        viewModel.getUserRequests("diogo.bernardo.dev@gmail.com")
+        viewModel.getUserRequests(userEmail)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -109,7 +115,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun handleSendButtonClick(userInputTextView: TextView, progressBar: ProgressBar, sendButton: Button) {
         val userInput = userInputTextView.text.toString()
-        val request = InferenceRequest(input = userInput, user = "diogo.bernardo.dev@gmail.com")
+        val request = InferenceRequest(input = userInput, user = userEmail)
 
         progressBar.visibility = View.VISIBLE
         userInputTextView.isEnabled = false
