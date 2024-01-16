@@ -14,6 +14,8 @@
 
         <item name="logo_project">@drawable/p_logo</item>
         <item name="logo_company">@drawable/c_logo</item>
+
+        <item name="button_bg1">@drawable/rounded_button_gray</item>
     </style>
 
 

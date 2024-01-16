@@ -43,6 +43,10 @@
             android:exported="false"
             android:label="Home" />
         <activity
+            android:name=".ui.visimage.VisImageActivity"
+            android:exported="false"
+            android:label="VisImage" />
+        <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false"
             android:label="Camera" />

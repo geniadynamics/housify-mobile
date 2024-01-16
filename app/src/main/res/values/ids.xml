@@ -16,6 +16,7 @@
     <item name="subscriptionLevel" type="id" />
     <item name="birthDate" type="id" />
     <item name="createAccount" type="id" />
+    <item name="userText" type="id" />
     <string-array name="niveis_subscricao">
         <item>Free</item>
         <item>Tier</item>
