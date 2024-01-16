@@ -18,6 +18,7 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.net.URL
 import android.content.pm.PackageManager
+import android.os.Environment
 
 
 class VisImageActivity : AppCompatActivity() {
@@ -109,6 +110,7 @@ class VisImageActivity : AppCompatActivity() {
                 val contentValues = ContentValues().apply {
                     put(MediaStore.Images.Media.DISPLAY_NAME, "image.png")
                     put(MediaStore.Images.Media.MIME_TYPE, "image/png")
+                    put(MediaStore.MediaColumns.RELATIVE_PATH,Environment.DIRECTORY_PICTURES)
                 }
 
                 val resolver = contentResolver
