@@ -26,6 +26,7 @@ import org.geniadynamics.housify.viewmodel.InferenceViewModelFactory
 import org.geniadynamics.housify.data.network.ApiService
 import org.geniadynamics.housify.data.network.config.RetrofitClient
 import org.geniadynamics.housify.data.repository.InferenceRepository
+import org.geniadynamics.housify.ui.camera.CameraActivity
 import org.geniadynamics.housify.ui.visimage.VisImageActivity
 import org.geniadynamics.housify.ui.welcome.WelcomeActivity
 
@@ -98,6 +99,8 @@ class HomeActivity : AppCompatActivity() {
         builder.setMessage("Do you really want to logout?")
         builder.setPositiveButton("Yes") { _, _ ->
             val intent = Intent(this, WelcomeActivity::class.java)
+            val sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE)
+            sharedPreferences?.edit()?.remove("isLoggedIn")?.apply()
             startActivity(intent)
             finish()
         }
@@ -157,6 +160,12 @@ class HomeActivity : AppCompatActivity() {
 
         sendButton.setOnClickListener {
             handleSendButtonClick(userInputTextView, progressBar, sendButton)
+        }
+
+        val btnOpenCamera = findViewById<Button>(R.id.btnOpenCamera)
+        btnOpenCamera.setOnClickListener {
+            val intent = Intent(this, CameraActivity::class.java)
+            startActivity(intent)
         }
 
         chipGroup.setOnCheckedChangeListener { group, checkedId ->
