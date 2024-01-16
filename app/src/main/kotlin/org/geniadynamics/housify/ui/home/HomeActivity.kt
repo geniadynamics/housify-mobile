@@ -48,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
             adapter.setOnItemClickListener(object : OnItemClickListener {
                 override fun onItemClick(item: InferenceResponse) {
                     val intent = Intent(this@HomeActivity, VisImageActivity::class.java)
-                    intent.putExtra("userText", item.img_input)
+                    intent.putExtra("userText", item.input)
                     intent.putExtra("imageUrl", item.img_output)
                     intent.putExtra("additionalText", item.output_description)
                     intent.putExtra("title", item.output_classification)
