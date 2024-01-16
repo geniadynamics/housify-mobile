@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
     private fun isUserLoggedIn(): Boolean {
         val sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE)
         if (sharedPreferences != null) {
-            val email =  sharedPreferences.getString("isLoggedIn", "user")
+            val email =  sharedPreferences.getString("isLoggedIn", null)
             if (email != null){
                 return email.isNotEmpty()
             }
