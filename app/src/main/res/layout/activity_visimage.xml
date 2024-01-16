@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -64,25 +65,30 @@
             android:text="@string/small_title"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/transferButton"
+        <LinearLayout
+            android:id="@+id/buttonLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/titleText"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/transferir" />
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/shareButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/transferButton"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/share" />
+            <ImageView
+                android:id="@+id/transferButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_save"
+                android:contentDescription="@string/transferir" />
+
+            <ImageView
+                android:id="@+id/shareButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:src="@android:drawable/ic_menu_share"
+                android:contentDescription="@string/share" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 </RelativeLayout>
