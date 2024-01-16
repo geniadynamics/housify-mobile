@@ -56,12 +56,12 @@ class VisImageActivity : AppCompatActivity() {
         val titleTextView = findViewById<TextView>(R.id.titleText)
         titleTextView.text = title
 
-        val transferButton = findViewById<Button>(R.id.transferButton)
+        val transferButton = findViewById<ImageView>(R.id.transferButton)
         transferButton.setOnClickListener {
             onTransferButtonClick(imageUrl)
         }
 
-        val shareButton = findViewById<Button>(R.id.shareButton)
+        val shareButton = findViewById<ImageView>(R.id.shareButton)
         shareButton.setOnClickListener {
             onShareButtonClick(imageUrl)
         }
