@@ -33,9 +33,7 @@ class MainActivity : AppCompatActivity() {
              // Get new FCM registration token
              val token = task.result
 
-             // Log and toast
              Log.d("MAIN", token.toString())
-             Toast.makeText(baseContext, token.toString(), Toast.LENGTH_SHORT).show()
          })
         askNotificationPermission()
 
