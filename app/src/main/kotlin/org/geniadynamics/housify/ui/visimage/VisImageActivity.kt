@@ -1,5 +1,6 @@
 package org.geniadynamics.housify.ui.visimage
 
+import android.Manifest
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
@@ -18,21 +19,18 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.net.URL
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Environment
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 
 
 class VisImageActivity : AppCompatActivity() {
-
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) {
-                val imageUrl = intent.getStringExtra("imageUrl")
-                downloadImage(imageUrl)
-            } else {
-                Log.e("org.geniadynamics.housify.ui.visimage.VisImageActivity", "Permission denied")
-            }
-        }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visimage)
@@ -58,8 +56,10 @@ class VisImageActivity : AppCompatActivity() {
 
         val transferButton = findViewById<ImageView>(R.id.transferButton)
         transferButton.setOnClickListener {
-            onTransferButtonClick(imageUrl)
+            val imgUrl = intent.getStringExtra("imageUrl")
+            imgUrl?.let { downloadImage(it) }
         }
+
 
         val shareButton = findViewById<ImageView>(R.id.shareButton)
         shareButton.setOnClickListener {
@@ -67,76 +67,46 @@ class VisImageActivity : AppCompatActivity() {
         }
     }
 
-    private fun onTransferButtonClick(imageUrl: String?) {
-        Log.d("org.geniadynamics.housify.ui.visimage.VisImageActivity", "onTransferButtonClick - Button Clicked")
-        if (imageUrl != null) {
-            if (hasWriteExternalStoragePermission()) {
-                Log.d("org.geniadynamics.housify.ui.visimage.VisImageActivity", "hasWriteExternalStoragePermission")
-                downloadImage(imageUrl)
-            } else {
-                Log.d("org.geniadynamics.housify.ui.visimage.VisImageActivity", "Requesting write external storage permission")
-                requestWriteExternalStoragePermission()
-            }
-        } else {
-            Log.e("org.geniadynamics.housify.ui.visimage.VisImageActivity", "Image URL is null or empty")
-        }
-    }
-
-    private fun hasWriteExternalStoragePermission(): Boolean {
-        val permission = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-        return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun requestWriteExternalStoragePermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(
-                this,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-        ) {
-        } else {
-            requestPermissionLauncher.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        }
-    }
-
-    private fun downloadImage(imageUrl: String?) {
-        Log.d("org.geniadynamics.housify.ui.visimage.VisImageActivity", "downloadImage - Image URL: $imageUrl")
-        if (imageUrl != null) {
-            try {
-                val url = URL(imageUrl)
-                val connection = url.openConnection()
-                connection.connect()
-                val input = connection.getInputStream()
-
-                val contentValues = ContentValues().apply {
-                    put(MediaStore.Images.Media.DISPLAY_NAME, "image.png")
-                    put(MediaStore.Images.Media.MIME_TYPE, "image/png")
-                    put(MediaStore.MediaColumns.RELATIVE_PATH,Environment.DIRECTORY_PICTURES)
-                }
-
-                val resolver = contentResolver
-                val imageUri =
-                    resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-
-                imageUri?.let { uri ->
-                    resolver.openOutputStream(uri)?.use { outputStream ->
-                        copyStream(input, outputStream)
-                        Log.d(
-                            "org.geniadynamics.housify.ui.visimage.VisImageActivity",
-                            "Image downloaded successfully: $uri"
-                        )
+    private fun downloadImage(imageUrl: String) {
+        Glide.with(this)
+            .asBitmap()
+            .load(imageUrl)
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        saveImageToGallery(resource)
                     }
-
-                    resolver.notifyChange(uri, null)
                 }
 
-                input.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-                Log.e(
-                    "org.geniadynamics.housify.ui.visimage.VisImageActivity",
-                    "Image download failed: ${e.message}"
-                )
-            }
+                override fun onLoadCleared(placeholder: Drawable?) {
+                }
+            })
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun saveImageToGallery(bitmap: Bitmap) {
+        val contentValues = ContentValues().apply {
+            put(MediaStore.MediaColumns.DISPLAY_NAME, "Housify${System.currentTimeMillis()}.png")
+            put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
+            put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
+        }
+
+        val resolver = contentResolver
+        val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues)
+
+        try {
+            uri?.let {
+                val stream: OutputStream? = resolver.openOutputStream(it)
+                stream?.use {
+                    if (!bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it))
+                        throw IOException("Failed to save bitmap.")
+                }
+                Toast.makeText(this, "Image saved to gallery", Toast.LENGTH_LONG).show()
+            } ?: throw IOException("Failed to create new MediaStore record.")
+        } catch (e: IOException) {
+            Toast.makeText(this, "Failed to save image: ${e.message}", Toast.LENGTH_LONG).show()
+            e.printStackTrace()
         }
     }
 
@@ -150,12 +120,4 @@ class VisImageActivity : AppCompatActivity() {
         }
     }
 
-    @Throws(IOException::class)
-    private fun copyStream(input: InputStream, output: OutputStream) {
-        val buffer = ByteArray(1024)
-        var bytesRead: Int
-        while (input.read(buffer).also { bytesRead = it } != -1) {
-            output.write(buffer, 0, bytesRead)
-        }
-    }
 }
