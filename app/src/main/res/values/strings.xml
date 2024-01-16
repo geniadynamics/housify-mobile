@@ -70,4 +70,6 @@
     <string name="logout">Logout</string>
     <string name="account_management">Account_Management</string>
     <string name="about">About</string>
+    <string name="transferir">Download</string>
+    <string name="share">Share</string>
 </resources>
