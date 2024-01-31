@@ -2,7 +2,6 @@
 
 - Diogo Antunes (a21144@alunos.ipca.pt)
 - João Ribeiro (a23795@alunos.ipca.pt)
-- Edgar Baptista (a16447@alunos.ipca.pt)
 
 ## License
 
